@@ -1,3 +1,8 @@
+"""
+OceanScript is an Esoteric language used to encode and decode text
+into a formulation of characters - where the final result looks like waves in the ocean.
+"""
+
 import re
 import string
 from typing import Literal, Optional
@@ -8,7 +13,7 @@ __all__ = (
     "encode",
 )
 
-__version__ = "2.0.0"
+__version__ = "2.0.1"
 
 ROW_INDICATORS = "^~_"
 COLUMN_INDICATORS = "<->"

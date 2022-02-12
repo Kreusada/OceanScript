@@ -25,7 +25,7 @@ OceanScript isn't just random choice or a random jumble of characters. These cha
 have very specific meanings, which once understood, can be used to write oceanscript
 without the use of the encoder. Take a look at these 4 tables below:
 
-ㅤ | `<` | `-` | `>` |ㅤ 
+ㅤ | `<` | `-` | `>` |ㅤ
 --- | --- | --- | --- | ---
 `^` | a | b | c | `.`
 `~` | d | e | f | `.`
@@ -62,12 +62,12 @@ Have a look at some examples below to understand how to write these waves.
 Here is an example of typing the character `a`. It is the easiest character to type
 from memory, and is great to use as a first example. Lets zoom in on `a`'s box below:
 
-ㅤ | `<` | `-` | `>` |ㅤ 
+ㅤ | `<` | `-` | `>` |ㅤ
 --- | --- | --- | --- | ---
 `^` | a | b | c | `.`
 `~` | d | e | f | `.`
 `_` | g | h | i | `.`
-ㅤ | `<` | `-` | `>` |ㅤ 
+ㅤ | `<` | `-` | `>` |ㅤ
 
 Using the table above, the character `a` is in the top row of it's box,
 so our first character is `^`. Next, you need to check the column. `a` is
@@ -132,7 +132,7 @@ It is best to keep these special characters out of the ocean, so these character
 need to use a raft (`=`). Simply put the raft before the character. If you wanted to write the
 Greek lambda character (`λ`), it will need a raft seeing as its not in the large table,
 so it would simply be written as `=λ`. More common characters (`.`, `!`, `?`) are more likely
-to appear, they will need rafts too. 
+to appear, they will need rafts too.
 
 * `?` -> `=?`
 * `^` -> `=^`
