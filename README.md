@@ -46,13 +46,9 @@ without the use of the encoder. Take a look at these 4 tables below:
 
 When typing a character, you need to check the following in order:
 
-* What row is my character in?
-* What column is my character in?
-* What box is my character in?
-
-* The rows are denoted by the following characters: `^`, `~`, `_`.
-* The columns are denoted by the following indicators: `<`, `-`, `>`.
-* The boxes are denoted by `.`, multipled by n, where n is the box number. There are 4 boxes.
+* What row is my character in? (The rows are denoted by the following characters: `^`, `~`, `_`.)
+* What column is my character in? (The columns are denoted by the following indicators: `<`, `-`, `>`.)
+* What box is my character in? (The boxes are denoted by `.`, multipled by n, where n is the box number. There are 4 boxes.)
 
 Our final product will be known as a "wave". It will contain from 3 to 6 characters.
 Have a look at some examples below to understand how to write these waves.
@@ -191,10 +187,12 @@ Identifier | Description
 
 Word | Description | Example
 --- | --- | ---
-`wave` | A single character encoded into oceanscript. | `^<..`
-`tide` | A collection of waves to form a word, where the word is the tide. | `*_-.~-.^>..^>..~>..`
 `raft` | A character (`=`) used to prefix a special character (not a-Z or 0-9). | `=.`
+`ripple` | A character that would make up a wave. Does not include `=`, `*` or `%`. | `^`
 `splash` | A character (`*`) used to capitalize the following wave. | `*_<.`
+`tide` | A collection of waves to form a word, where the word is the tide. | `*_-.~-.^>..^>..~>..`
+`wave` | A single character encoded into oceanscript. | `^<..`
+
 
 # Python Implementation
 
@@ -257,16 +255,16 @@ exception was raised (at the start of the wave).
 
 ```py
 >>> oceanscript.decode("*>....") # capitalizing int
-OceanScriptError: Capitalization indicator not allowed for integers (position 0)
+OceanScriptError: Splash indicator not allowed for integers (position 0)
 
 >>> oceanscript.decode("=a") # rafting ascii value
-OceanScriptError: Do not escape ascii letters/digits in escape sequence ('=a'). Use '^<.' instead. (position 0)
+OceanScriptError: Do not use lowercase ascii letters or digits on a raft ('=a'). Use '^<.' instead. (position 0)
 
 >>> oceanscript.decode("^-.~>..#>..") # invalid row indicator '#'
 OceanScriptError: '#' is not a valid row indicator (position 7)
 
 >>> oceanscript.decode("^+...") # invalid column indicator '+'
-OceanScriptError: '^' marker expected '<', '-', or '>', but received '+' instead (position 0)
+OceanScriptError: '^' indicator expected '<', '-', or '>', but received '+' instead (position 0)
 ```
 
 Other tracebacks can appear, too.

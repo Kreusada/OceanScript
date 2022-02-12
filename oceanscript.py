@@ -13,7 +13,7 @@ __all__ = (
     "encode",
 )
 
-__version__ = "2.0.1"
+__version__ = "2.0.2"
 
 ROW_INDICATORS = "^~_"
 COLUMN_INDICATORS = "<->"
@@ -153,7 +153,8 @@ def decode(text: str) -> str:
 
         if s[0] == "*":
             s = s[1:]
-            if "".join(s) in (
+            join = "".join(s)
+            if join in (
                 "_>...",
                 "^<....",
                 "^-....",
@@ -166,7 +167,7 @@ def decode(text: str) -> str:
                 "_>....",
             ):
                 raise OceanScriptError(
-                    message="Capitalization indicator not allowed for integers",
+                    message="Splash indicator not allowed for integers",
                     position=position,
                 )
             func = str.upper
@@ -178,7 +179,7 @@ def decode(text: str) -> str:
             for letter in string.ascii_letters + string.digits:
                 if letter in after:
                     raise OceanScriptError(
-                        message=f"Do not escape ascii letters/digits in escape sequence ('={letter}'). Use '{encode(letter)}' instead.",
+                        message=f"Do not use lowercase ascii letters or digits on a raft ('={letter}'). Use '{encode(letter)}' instead.",
                         position=position,
                     )
             message += func(after)
@@ -193,7 +194,7 @@ def decode(text: str) -> str:
         column_indicator = s[1]
         if column_indicator not in COLUMN_INDICATORS:
             raise OceanScriptError(
-                message=f"'{row_indicator}' marker expected '<', '-', or '>', but received '{column_indicator}' instead",
+                message=f"'{row_indicator}' indicator expected '<', '-', or '>', but received '{column_indicator}' instead",
                 position=position,
             )
         dots = s[2:]
@@ -205,7 +206,7 @@ def decode(text: str) -> str:
             )
         if any(d != "." for d in dots):
             raise OceanScriptError(
-                message=f"'{column_indicator}' marker expected only dots, but received '{dots}' instead",
+                message=f"'{column_indicator}' indicator expected only dots, but received '{dots}' instead",
                 position=position,
             )
         if row_indicator == "^":
