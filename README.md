@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/Kreusada/OceanScript"><img src="https://raw.githubusercontent.com/Kreusada/OceanScript/blob/main/.github/oceanscript.png" alt="OceanScript Esoteric Language"></a>
+  <a href="https://github.com/Kreusada/OceanScript"><img src="https://github.com/Kreusada/OceanScript/blob/main/.github/oceanscript.png?raw=true" alt="OceanScript Esoteric Language"></a>
   <br>
   OceanScript Esoteric Language
   <br>
