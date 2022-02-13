@@ -2,7 +2,7 @@
   <br>
   <a href="https://github.com/Kreusada/OceanScript"><img src="https://github.com/Kreusada/OceanScript/blob/main/.github/oceanscript.png?raw=true" alt="OceanScript Esoteric Language"></a>
   <br>
-  OceanScript Esoteric Language
+  OceanScript Esoteric Language (2.0.2 release)
   <br>
 </h1>
 
@@ -143,7 +143,7 @@ Capitalization hadn't been supported for months proceeding the initial release
 of oceanscript, but its now available. To make a character capital, use a splash (`*`) before the wave.
 
 * `a` -> `^<.`
-* `A` -> `*<.`
+* `A` -> `*^<.`
 
 For each capital wave you have, you will have to add a splash before each one. *Yes, these waves are choppy...*
 

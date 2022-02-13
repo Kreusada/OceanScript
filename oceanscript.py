@@ -135,15 +135,15 @@ def decode(text: str) -> str:
         The original text.
     """
     split = re.split(r"(\*?=.)|(\\n|,|%)|(\*?[\^~_][>\-<]\.{1,4})", text.strip())
-    ret = tuple(filter(None, split))
-    message = ""
-    for i, s in enumerate(ret):
-        position = sum(map(len, ret[:i]))
+    chunks = tuple(filter(None, split))
+    ret = ""
+    for i, s in enumerate(chunks):
+        position = sum(map(len, chunks[:i]))
         if s in ",\n":
-            message += " "
+            ret += " "
             continue
         if s == "%":
-            message += "\n"
+            ret += "\n"
             continue
         if len(s) < 2:
             raise OceanScriptError(
@@ -182,7 +182,7 @@ def decode(text: str) -> str:
                         message=f"Do not use lowercase ascii letters or digits on a raft ('={letter}'). Use '{encode(letter)}' instead.",
                         position=position,
                     )
-            message += func(after)
+            ret += func(after)
             continue
 
         row_indicator = s[0]
@@ -231,6 +231,6 @@ def decode(text: str) -> str:
             else:
                 selection = R3S3S
         letters = dict(zip(range(1, 5), selection))
-        message += func(letters[cdots])
+        ret += func(letters[cdots])
         continue
-    return message
+    return ret
