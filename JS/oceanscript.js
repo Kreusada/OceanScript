@@ -1,7 +1,4 @@
-module.exports = {
-    encode: encode,
-    OceanScriptError: OceanScriptError,
-}
+'use strict';
 
 const ROW_INDICATORS = "^~_"
 const COLUMN_INDICATORS = "<->"
@@ -123,3 +120,8 @@ function encode(text) {
 //         }
 //     }
 // }
+
+module.exports = {
+    encode: encode,
+    OceanScriptError: OceanScriptError
+};

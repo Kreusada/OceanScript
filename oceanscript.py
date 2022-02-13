@@ -13,7 +13,7 @@ __all__ = (
     "encode",
 )
 
-__version__ = "2.0.2"
+__version__ = "2.0.3"
 
 ROW_INDICATORS = "^~_"
 COLUMN_INDICATORS = "<->"
@@ -232,5 +232,4 @@ def decode(text: str) -> str:
                 selection = R3S3S
         letters = dict(zip(range(1, 5), selection))
         ret += func(letters[cdots])
-        continue
     return ret

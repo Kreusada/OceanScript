@@ -2,7 +2,7 @@
   <br>
   <a href="https://github.com/Kreusada/OceanScript"><img src="https://github.com/Kreusada/OceanScript/blob/main/.github/oceanscript.png?raw=true" alt="OceanScript Esoteric Language"></a>
   <br>
-  OceanScript Esoteric Language (2.0.2 release)
+  OceanScript Esoteric Language (2.0.3 release)
   <br>
 </h1>
 
@@ -15,7 +15,7 @@
 OceanScript is an Esoteric language used to encode and decode text into
 a formulation of characters - where the final result looks like waves in the ocean.
 
-Unlike it's prior versions, OceanScript supports any character, as well as capitalization.
+Unlike its prior versions, OceanScript supports any character, as well as capitalization.
 Your encoded string should be decoded to look exactly the same as the encoded string. Note, however,
 that outlying whitespace characters are stripped from the edges of the text.
 
@@ -65,9 +65,9 @@ from memory, and is great to use as a first example. Lets zoom in on `a`'s box b
 `_` | g | h | i | `.`
 ㅤ | `<` | `-` | `>` |ㅤ
 
-Using the table above, the character `a` is in the top row of it's box,
+Using the table above, the character `a` is in the top row of its box,
 so our first character is `^`. Next, you need to check the column. `a` is
-also in the first column, so our second character is `<` (pointing to the left).
+in the left-hand column, so our second character is `<` (pointing to the left).
 Finally, we need to check which box character `a` is in. We will add `.` according to
 the table above. The number of dots corresponds to the box number (1-4).
 
@@ -84,7 +84,7 @@ Here is an example of typing the character `x`. Lets zoom in on `x`'s box below:
 `_` | y | z | 0 | `...`
 ㅤ | `<` | `-` | `>` |ㅤ
 
-Using the table above, the character `x` is in the second row of it's box,
+Using the table above, the character `x` is in the second row of its box,
 so our first character is `~`. Next, you need to check the column. `x` is
 in the right-hand column, so our second character is `>` (pointing to the right).
 Finally, we need to check which box character `x` is in. We will add `...`, because
@@ -126,7 +126,7 @@ new special character indicator has been added to support any other character.
 
 It is best to keep these special characters out of the ocean, so these characters will
 need to use a raft (`=`). Simply put the raft before the character. If you wanted to write the
-Greek lambda character (`λ`), it will need a raft seeing as its not in the large table,
+Greek lambda character (`λ`), it will need a raft seeing as it's not in the large table,
 so it would simply be written as `=λ`. More common characters (`.`, `!`, `?`) are more likely
 to appear, they will need rafts too.
 
@@ -140,7 +140,7 @@ See below about capitalization.
 ## Capitalization
 
 Capitalization hadn't been supported for months proceeding the initial release
-of oceanscript, but its now available. To make a character capital, use a splash (`*`) before the wave.
+of oceanscript, but it's now available. To make a character capital, use a splash (`*`) before the wave.
 
 * `a` -> `^<.`
 * `A` -> `*^<.`
@@ -170,11 +170,11 @@ In oceanscript, the above acronym would be encoded into `*~-..%*^<.%*^<...%*^<.`
 
 Identifier | Description
 --- | ---
-`,` | Represents a space
-`\n` | Represents a space
-`%` | Represents a line break
-`=` | Creates a raft for a single character (proceeding character will be ignored by encoder)
-`*` | Creates a splash for a wave (proceeding wave will be capitalized)
+`,` | Represents a space.
+`\n` | Represents a space.
+`%` | Represents a line break.
+`=` | Creates a raft for a single character (proceeding character will be ignored by encoder).
+`*` | Creates a splash for a wave (proceeding wave will be capitalized).
 `^` | Denotes the top row of a box for a single wave.
 `~` | Denotes the middle row of a box for a single wave.
 `_` | Denotes the bottom row of a box for a single wave.
@@ -196,10 +196,9 @@ Word | Description | Example
 
 # Python Implementation
 
-As a programmer, I just had to make a Python library for this.
-Once upon a time, it was all just a looming thought in my mind with so much
-potential. Its been great to be able to create a working usable program for it,
-for anyone to use and play around with.
+I just had to make a Python library for this. It was all just a looming thought
+in my mind with so much potential. It's been great to be able to create a working
+usable program for it, for anyone to use and play around with.
 
 Start by importing the module:
 
