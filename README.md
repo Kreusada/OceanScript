@@ -2,7 +2,7 @@
   <br>
   <a href="https://github.com/Kreusada/OceanScript"><img src="https://github.com/Kreusada/OceanScript/blob/main/.github/oceanscript.png?raw=true" alt="OceanScript Esoteric Language"></a>
   <br>
-  OceanScript Esoteric Language (2.1.0 release)
+  OceanScript Esoteric Language (2.1.1 release)
   <br>
 </h1>
 
@@ -301,13 +301,7 @@ to remove the position reference prefixed to the start of the exception string.
 >>> try:
 >>>     decode("*~>.._<.~>..~-..~-.^-..,*~>..=:,*=Ǫ")
 >>> except OceanScriptError as err:
->>>     print(err)
-"[Position 32] Splash is redundent in this position, given wave is already uppercase ('Ǫ'). Use '*=ǫ' or '=Ǫ' instead."
-
->>> try:
->>>     decode("*~>.._<.~>..~-..~-.^-..,*~>..=:,*=Ǫ")
->>> except OceanScriptError as err:
->>>     print(err)
+>>>     print(err.without_position_reference())
 "Splash is redundent in this position, given wave is already uppercase ('Ǫ'). Use '*=ǫ' or '=Ǫ' instead."
 ```
 
@@ -323,7 +317,7 @@ to include invalid identifiers/waves in the string, defaulting to True.
 ('*_-.', '~-.', '^>..', '^>..', '~>..', '~-...', '~>..', '_>..', '^>..', '~<.', '=!')
 >>> oceanscript.splitwaves("*_-.~-.^>..^>..~>..,~-...~>.._>..^>..~<.=!,whoops")
 ('*_-.', '~-.', '^>..', '^>..', '~>..', ',', '~-...', '~>..', '_>..', '^>..', '~<.', '=!', ',', 'w', 'h', 'o', 'o', 'p', 's')
->>> oceanscript.splitwaves("*_-.~-.^>..^>..~>..,~-...~>.._>..^>..~<.=!,whoops")
+>>> oceanscript.splitwaves("*_-.~-.^>..^>..~>..,~-...~>.._>..^>..~<.=!,whoops", include_invalid=False)
 ('*_-.', '~-.', '^>..', '^>..', '~>..', '~-...', '~>..', '_>..', '^>..', '~<.', '=!')
 ```
 

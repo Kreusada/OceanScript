@@ -13,7 +13,7 @@ __all__ = (
     "encode",
 )
 
-__version__ = "2.1.0"
+__version__ = "2.1.1"
 
 ROW_INDICATORS = "^~_"
 COLUMN_INDICATORS = "<->"
