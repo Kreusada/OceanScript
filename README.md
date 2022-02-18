@@ -2,13 +2,36 @@
   <br>
   <a href="https://github.com/Kreusada/OceanScript"><img src="https://github.com/Kreusada/OceanScript/blob/main/.github/oceanscript.png?raw=true" alt="OceanScript Esoteric Language"></a>
   <br>
-  OceanScript Esoteric Language (2.0.3 release)
+  OceanScript Esoteric Language (2.1.0 release)
   <br>
 </h1>
 
-[![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Imports: isort](https://user-images.githubusercontent.com/6032823/111363465-600fe880-8690-11eb-8377-ec1d4d5ff981.png)](https://github.com/PyCQA/isort)
-[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+<p align="center">
+  <a href="https://github.com/psf/black">
+    <img alt="Code Style: Black" src="https://img.shields.io/badge/code%20style-black-000000.svg">
+  </a>
+  <a href="https://pypi.org/project/Red-DiscordBot/">
+     <img alt="Imports: Isort" src="https://user-images.githubusercontent.com/6032823/111363465-600fe880-8690-11eb-8377-ec1d4d5ff981.png">
+  </a>
+  <a href="https://www.python.org/downloads/">
+    <img alt="PyPI - Python Versions" src="https://img.shields.io/pypi/pyversions/OceanScript">
+  </a>
+  <a href="https://www.patreon.com/kreusada">
+    <img src="https://img.shields.io/badge/Support-on%20Patreon-red.svg" alt="Support on Patreon">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://pepy.tech/project/oceanscript">
+    <img alt="Total downloads" src="https://pepy.tech/badge/oceanscript">
+  </a>
+  <a href="https://pepy.tech/project/oceanscript">
+    <img alt="Downloads in the past month" src="https://pepy.tech/badge/oceanscript/month">
+  </a>
+  <a href="https://pepy.tech/project/oceanscript">
+    <img alt="Downloads in the past week" src="https://pepy.tech/badge/oceanscript/week">
+  </a>
+</p>
 
 # Overview
 
@@ -250,23 +273,59 @@ If the oceanscript doesn't look quite right, the parser won't like it.
 for correcting these mistakes.
 
 OceanScriptError has a `position` attribute, which is the string index in where the
-exception was raised (at the start of the wave).
+exception was raised (at the start of the wave affected).
 
 ```py
->>> oceanscript.decode("*>....") # capitalizing int
-OceanScriptError: Splash indicator not allowed for integers (position 0)
+>>> oceanscript.decode("*^>....") # trying to capitalize integer (3)
+OceanScriptError: [Position 0] Splash indicator not allowed for integer waves
 
->>> oceanscript.decode("=a") # rafting ascii value
-OceanScriptError: Do not use lowercase ascii letters or digits on a raft ('=a'). Use '^<.' instead. (position 0)
+>>> oceanscript.decode("=a") # rafting a-Z/0-9
+OceanScriptError: [Position 0] Do not use a-Z/0-9 on a raft ('=a'). Use '^<.' instead.
 
 >>> oceanscript.decode("^-.~>..#>..") # invalid row indicator '#'
-OceanScriptError: '#' is not a valid row indicator (position 7)
+OceanScriptError: [Position 7] Invalid syntax: '#'. Perhaps you meant '=#'?
 
->>> oceanscript.decode("^+...") # invalid column indicator '+'
-OceanScriptError: '^' indicator expected '<', '-', or '>', but received '+' instead (position 0)
+>>> oceanscript.decode("*^-..._>._-.^<...,_>.^<...,~-..._>..~>..~-.._+.") # invalid column indicator '+'
+OceanScriptError: [Position 44] Row indicator '_' expecting valid column indicator afterwards ('<', '-', or '>')
+
+>>> oceanscript.encode("*~<.~-.^>..^-...^<.=:,*=Δ") # splash indicator before already capitalized alphabetic character
+OceanScriptError: [Position 22] Splash is redundent in this position, given wave is already uppercase ('Δ'). Use '*=δ' or '=Δ' instead.
 ```
 
 Other tracebacks can appear, too.
+
+You can handle tracebacks to your own liking with the `.without_position_reference()` method
+to remove the position reference prefixed to the start of the exception string.
+
+```py
+>>> try:
+>>>     decode("*~>.._<.~>..~-..~-.^-..,*~>..=:,*=Ǫ")
+>>> except OceanScriptError as err:
+>>>     print(err)
+"[Position 32] Splash is redundent in this position, given wave is already uppercase ('Ǫ'). Use '*=ǫ' or '=Ǫ' instead."
+
+>>> try:
+>>>     decode("*~>.._<.~>..~-..~-.^-..,*~>..=:,*=Ǫ")
+>>> except OceanScriptError as err:
+>>>     print(err)
+"Splash is redundent in this position, given wave is already uppercase ('Ǫ'). Use '*=ǫ' or '=Ǫ' instead."
+```
+
+### Splitting Waves
+
+Since `v2.1.0`, the functionality to split waves has been created as
+a public method, and is continually used by the decoder when decoding.
+It has an `include_invalid` keyword only argument which defines whether
+to include invalid identifiers/waves in the string, defaulting to True.
+
+```py
+>>> oceanscript.splitwaves("*_-.~-.^>..^>..~>..,~-...~>.._>..^>..~<.=!")
+('*_-.', '~-.', '^>..', '^>..', '~>..', '~-...', '~>..', '_>..', '^>..', '~<.', '=!')
+>>> oceanscript.splitwaves("*_-.~-.^>..^>..~>..,~-...~>.._>..^>..~<.=!,whoops")
+('*_-.', '~-.', '^>..', '^>..', '~>..', ',', '~-...', '~>..', '_>..', '^>..', '~<.', '=!', ',', 'w', 'h', 'o', 'o', 'p', 's')
+>>> oceanscript.splitwaves("*_-.~-.^>..^>..~>..,~-...~>.._>..^>..~<.=!,whoops")
+('*_-.', '~-.', '^>..', '^>..', '~>..', '~-...', '~>..', '_>..', '^>..', '~<.', '=!')
+```
 
 # Installation
 

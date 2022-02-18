@@ -5,7 +5,7 @@ into a formulation of characters - where the final result looks like waves in th
 
 import re
 import string
-from typing import Literal, Optional
+from typing import Literal, Optional, Tuple
 
 __all__ = (
     "OceanScriptError",
@@ -13,7 +13,7 @@ __all__ = (
     "encode",
 )
 
-__version__ = "2.0.3"
+__version__ = "2.1.0"
 
 ROW_INDICATORS = "^~_"
 COLUMN_INDICATORS = "<->"
@@ -49,9 +49,22 @@ MUL_MAPPING = {
 class OceanScriptError(Exception):
     """Exception class used to raise decoding errors."""
 
-    def __init__(self, *, message: str, position: int) -> None:
+    def __init__(self, *, message: str, position: Optional[int] = None) -> None:
         self.position = position
-        super().__init__(f"{message} (position {position})")
+        self._message = message
+        if position is not None:
+            message = f"[Position {position}] " + message
+        super().__init__(message)
+
+    def without_position_reference(self) -> str:
+        """Returns the traceback string without the position reference at the end.
+
+        Returns
+        ------
+        str
+            The traceback message without position reference.
+        """
+        return self._message
 
 
 def encode(text: str, *, mode: Optional[Literal["squash", "stretch"]] = "squash") -> str:
@@ -77,7 +90,14 @@ def encode(text: str, *, mode: Optional[Literal["squash", "stretch"]] = "squash"
     ret = ""
     for char in text.strip():
         if char.isupper():
+            # capitals in oceanscript use the splash indicator (*)
+            # before wave declaration
             ret += "*"
+        # now that potential capitalization has been recorded, we will
+        # convert the character to lower case. This is to make encoding
+        # faster and easier, but also prevents errors with capitalized
+        # alphabetic characters after the splash indicator i.e.
+        # "*=λ" is allowed but "*=Λ" is not
         char = char.lower()
         if char in R1S:
             ret += "^"
@@ -108,16 +128,53 @@ def encode(text: str, *, mode: Optional[Literal["squash", "stretch"]] = "squash"
             ret += "." * MUL_MAPPING[R3S.index(char)]
         elif char == " ":
             if mode == "squash":
+                # squash mode ensures that no whitespace characters
+                # are found in the encoding
                 ret += ","
             elif mode == "stretch":
+                # stretch mode ensures a line break splits each wave
                 ret += "\n"
             else:
                 raise ValueError(f"unknown mode '{mode}'")
         elif char == "\n":
+            # % is used to represent line breaks in oceanscript
             ret += "%"
         else:
+            # now we've covered all the special and default scenarios,
+            # this character requires a raft. Rafts are used to support
+            # any other characters that are not handled above
             ret += "=" + char
     return ret
+
+
+def splitwaves(text: str, *, include_invalid: bool = True) -> Tuple[str]:
+    """Split oceanscript into waves.
+
+    Invalid characters will not be omitted from the returned tuple.
+
+    Parameters
+    ----------
+
+    text: str
+        The oceanscript to split.
+
+    include_invalid: bool
+        Whether to include invalid identifiers in the string.
+        Defaults to True.
+
+    Returns
+    -------
+
+    Tuple[str]
+        A tuple of waves split from the oceanscript
+    """
+    split = re.split(r"(\*?=.)|(\\n|,|%)|(\*?[\^~_][>\-<]\.+)|(.)", text.strip())
+    if include_invalid:
+        check = None
+    else:
+        # all invalid identifiers are isolated as length 1 strings
+        check = lambda e: e and len(e) != 1
+    return tuple(filter(check, split))
 
 
 def decode(text: str) -> str:
@@ -134,52 +191,96 @@ def decode(text: str) -> str:
     str
         The original text.
     """
-    split = re.split(r"(\*?=.)|(\\n|,|%)|(\*?[\^~_][>\-<]\.{1,4})", text.strip())
-    chunks = tuple(filter(None, split))
+    chunks = splitwaves(text)  # this is now a public method
     ret = ""
     for i, s in enumerate(chunks):
         position = sum(map(len, chunks[:i]))
+        # this position variable is the index of the first
+        # character of this current iteration inside the entire string
         if s in ",\n":
             ret += " "
             continue
         if s == "%":
             ret += "\n"
             continue
-        if len(s) < 2:
+        if len(s) == 1:
+            # thanks to the regex, any invalid identifier will be isolated
+            # as an element with a length of 1
+
+            # here, i am just finelining the traceback message to make it
+            # much clearer for the user where they went wrong
+            if s == "=":
+                message = "Raft deployed without passenger"
+            elif s == "*":
+                message = "Splash created without wave declaration"
+            elif s in ROW_INDICATORS:
+                message = f"Row indicator '{s}' expecting valid column indicator afterwards ('<', '-', or '>')"
+            elif s in COLUMN_INDICATORS:
+                message = f"Waves must start with row indicators, not a column indicator ('{s}'). Expecting valid row indicator instead ('^', '~', or '_')"
+            elif s == ".":
+                message = "Dot indicator expecting to follow partially established waves, but do not follow any partial wave at this position"
+            elif s in string.ascii_letters + string.digits:
+                message = f"Invalid syntax: '{s}'. Ascii letters and integers must be written in their encoded form ({s} = '{encode(s)}')."
+                if position == 0:
+                    # start of the string, wrong method used, so this logical suggestion is made
+                    message += " Perhaps you were meant to use oceanscript.encode()?"
+            else:
+                # just like encoding the string, passing through other scenarios
+                # has left us nowhere. This is an invalid character, so we will
+                # suggest to prefix it with a raft
+                message = f"Invalid syntax: '{s}'. Perhaps you meant '={s}'?"
+
             raise OceanScriptError(
-                message=f"invalid syntax '{s}'",
+                message=message,
                 position=position,
             )
 
         if s[0] == "*":
             s = s[1:]
-            join = "".join(s)
-            if join in (
-                "_>...",
-                "^<....",
-                "^-....",
-                "^>....",
-                "~<....",
-                "~-....",
-                "~>....",
-                "_<....",
-                "_-....",
-                "_>....",
-            ):
-                raise OceanScriptError(
-                    message="Splash indicator not allowed for integers",
-                    position=position,
-                )
+            try:
+                # this is being done because the
+                # splash indicator should only be used on alphabetic
+                # waves. we can't just check if an iterable of strings
+                # contains a-z, because greek (for example) letters
+                # need to be taken into consideration
+                # i.e.: "*=δ" but NOT "*=["
+                d = decode("".join(s))
+            except OceanScriptError:
+                # this will be handled with its full string
+                pass
+            else:
+                if d.isdigit():
+                    raise OceanScriptError(
+                        message="Splash indicator not allowed for integer waves", position=position
+                    )
+                if not d.isalpha():
+                    raise OceanScriptError(
+                        message="Splash indicator only allowed for alphabetic waves",
+                        position=position,
+                    )
+                if d.isupper():
+                    raise OceanScriptError(
+                        message=(
+                            f"Splash is redundent in this position, given wave is already uppercase ('{d}'). "
+                            f"Use '*={d.lower()}' or '={d}' instead."
+                        ),
+                        position=position,
+                    )
+            # splash indicator means the string in this iteration
+            # must be capitalized. For the sake of ease, an inutile
+            # lambda will otherwise call the string
             func = str.upper
         else:
             func = lambda x: x
 
         if s[0] == "=":
             after = "".join(s[1:])
-            for letter in string.ascii_letters + string.digits:
-                if letter in after:
+            for character in string.ascii_letters + string.digits:
+                if character in after:
+                    # a-Z/0-9 are the only characters where a raft
+                    # cannot be used
                     raise OceanScriptError(
-                        message=f"Do not use lowercase ascii letters or digits on a raft ('={letter}'). Use '{encode(letter)}' instead.",
+                        message=f"Do not use a-Z/0-9 on a raft ('={character}'). Use '{encode(character)}' instead.",
                         position=position,
                     )
             ret += func(after)
@@ -188,25 +289,31 @@ def decode(text: str) -> str:
         row_indicator = s[0]
         if row_indicator not in ROW_INDICATORS:
             raise OceanScriptError(
-                message=f"'{row_indicator}' is not a valid row indicator",
+                message=f"Expected '^', '~', or '_' as a row indicator, but received '{row_indicator}' instead",
                 position=position,
             )
         column_indicator = s[1]
         if column_indicator not in COLUMN_INDICATORS:
             raise OceanScriptError(
-                message=f"'{row_indicator}' indicator expected '<', '-', or '>', but received '{column_indicator}' instead",
+                message=f"Row indicator '{row_indicator}' expected '<', '-', or '>', but received '{column_indicator}' instead",
                 position=position,
             )
         dots = s[2:]
+        # <row_indicator><column_indicator><dots...> (2:)
         cdots = len(dots)
-        if cdots not in range(1, 5):
+        dot_range = range(1, 5)  # double reference
+        if cdots not in dot_range:
+            if cdots == 0:
+                m = "but did not find any"
+            else:
+                m = f"but found {cdots} instead"
             raise OceanScriptError(
-                message=f"Expected 1, 2, 3 or 4 dots, but found {cdots} instead",
+                message=f"Partially established wave ('{row_indicator}{column_indicator}') expected 1, 2, 3, or 4 dots at the end, {m}",
                 position=position,
             )
         if any(d != "." for d in dots):
             raise OceanScriptError(
-                message=f"'{column_indicator}' indicator expected only dots, but received '{dots}' instead",
+                message=f"'{column_indicator}' indicator expected only dot indicators, but received '{dots}' instead",
                 position=position,
             )
         if row_indicator == "^":
@@ -230,6 +337,6 @@ def decode(text: str) -> str:
                 selection = R3S2S
             else:
                 selection = R3S3S
-        letters = dict(zip(range(1, 5), selection))
+        letters = dict(zip(dot_range, selection))
         ret += func(letters[cdots])
     return ret
