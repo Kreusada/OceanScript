@@ -2,7 +2,7 @@
   <br>
   <a href="https://github.com/Kreusada/OceanScript"><img src="https://github.com/Kreusada/OceanScript/blob/main/.github/oceanscript.png?raw=true" alt="OceanScript Esoteric Language"></a>
   <br>
-  OceanScript Esoteric Language (2.1.1 release)
+  OceanScript Esoteric Language (2.1.2 release)
   <br>
 </h1>
 
@@ -10,7 +10,7 @@
   <a href="https://github.com/psf/black">
     <img alt="Code Style: Black" src="https://img.shields.io/badge/code%20style-black-000000.svg">
   </a>
-  <a href="https://pypi.org/project/Red-DiscordBot/">
+  <a href="https://github.com/PyCQA/isort">
      <img alt="Imports: Isort" src="https://user-images.githubusercontent.com/6032823/111363465-600fe880-8690-11eb-8377-ec1d4d5ff981.png">
   </a>
   <a href="https://www.python.org/downloads/">

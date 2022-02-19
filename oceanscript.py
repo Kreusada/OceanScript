@@ -13,7 +13,7 @@ __all__ = (
     "encode",
 )
 
-__version__ = "2.1.1"
+__version__ = "2.1.2"
 
 ROW_INDICATORS = "^~_"
 COLUMN_INDICATORS = "<->"
@@ -173,7 +173,7 @@ def splitwaves(text: str, *, include_invalid: bool = True) -> Tuple[str]:
         check = None
     else:
         # all invalid identifiers are isolated as length 1 strings
-        check = lambda e: e and len(e) != 1
+        check = lambda e: e and (e in "\n,%" or len(e) != 1)
     return tuple(filter(check, split))
 
 
