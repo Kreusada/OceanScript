@@ -13,7 +13,7 @@ __all__ = (
     "encode",
 )
 
-__version__ = "2.2.0"
+__version__ = "2.2.1"
 
 ROW_INDICATORS = "^~_"
 COLUMN_INDICATORS = "<->"
@@ -224,6 +224,8 @@ def decode(text: str) -> str:
                 if position == 0:
                     # start of the string, wrong method used, so this logical suggestion is made
                     message += " Perhaps you were meant to use oceanscript.encode()?"
+            elif s == " ":
+                message = f"Invalid syntax: '{s}'. Perhaps you meant ','?"
             else:
                 # just like encoding the string, passing through other scenarios
                 # has left us nowhere. This is an invalid character, so we will

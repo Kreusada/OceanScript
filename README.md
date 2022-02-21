@@ -2,7 +2,7 @@
   <br>
   <a href="https://github.com/Kreusada/OceanScript"><img src="https://github.com/Kreusada/OceanScript/blob/main/.github/oceanscript.png?raw=true" alt="OceanScript Esoteric Language"></a>
   <br>
-  OceanScript Esoteric Language (2.2.0 release)
+  OceanScript Esoteric Language (2.2.1 release)
   <br>
 </h1>
 
