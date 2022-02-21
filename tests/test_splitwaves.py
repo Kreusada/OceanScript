@@ -1,9 +1,9 @@
 import unittest
 
-from oceanscript import encode, splitwaves
+from oceanscript import splitwaves
 
 WHOOPS = "whoops"
-FALSY_HELLO_WORLD = "*_-.~-.^>..^>..~>..,~-...~>.._>..^>..~<.=!" + WHOOPS
+FALSY_HELLO_WORLD = "*_-.~-.^>..^>..~>..,~-...~>.._>..^>..~<.=!," + WHOOPS
 EXPECTED_SPLIT = (
     "*_-.",
     "~-.",
@@ -30,10 +30,10 @@ EXPECTED_SPLIT = (
 class TestSplitWaves(unittest.TestCase):
     def test_splitwaves_include_invalid(self):
         split = splitwaves(FALSY_HELLO_WORLD)
-        self.assertEqual(len(split), 18)
+        self.assertEqual(len(split), 19)
         self.assertEqual(split, EXPECTED_SPLIT)
 
     def test_splitwaves_do_not_include_invalid(self):
         split = splitwaves(FALSY_HELLO_WORLD, include_invalid=False)
-        self.assertEqual(len(split), 12)
+        self.assertEqual(len(split), 13)
         self.assertEqual(split, EXPECTED_SPLIT[: -len(WHOOPS)])

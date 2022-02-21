@@ -13,7 +13,7 @@ __all__ = (
     "encode",
 )
 
-__version__ = "2.1.2"
+__version__ = "2.1.3"
 
 ROW_INDICATORS = "^~_"
 COLUMN_INDICATORS = "<->"
@@ -168,7 +168,7 @@ def splitwaves(text: str, *, include_invalid: bool = True) -> Tuple[str]:
     Tuple[str]
         A tuple of waves split from the oceanscript
     """
-    split = re.split(r"(\*?=.)|(\\n|,|%)|(\*?[\^~_][>\-<]\.+)|(.)", text.strip())
+    split = re.split(r"(\*?=.)|(\\n|,|%)|(\*?[\^~_][>\-<]\.+)|(.|\n)", text.strip())
     if include_invalid:
         check = None
     else:
