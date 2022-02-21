@@ -13,7 +13,7 @@ __all__ = (
     "encode",
 )
 
-__version__ = "2.1.3"
+__version__ = "2.2.0"
 
 ROW_INDICATORS = "^~_"
 COLUMN_INDICATORS = "<->"
@@ -88,7 +88,7 @@ def encode(text: str, *, mode: Optional[Literal["squash", "stretch"]] = "squash"
         The oceanscript.
     """
     ret = ""
-    for char in text.strip():
+    for char in text:
         if char.isupper():
             # capitals in oceanscript use the splash indicator (*)
             # before wave declaration
@@ -168,7 +168,7 @@ def splitwaves(text: str, *, include_invalid: bool = True) -> Tuple[str]:
     Tuple[str]
         A tuple of waves split from the oceanscript
     """
-    split = re.split(r"(\*?=.)|(\\n|,|%)|(\*?[\^~_][>\-<]\.+)|(.|\n)", text.strip())
+    split = re.split(r"(\*?=.)|(\\n|,|%)|(\*?[\^~_][>\-<]\.+)|(.|\n)", text)
     if include_invalid:
         check = None
     else:

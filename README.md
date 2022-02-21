@@ -2,7 +2,7 @@
   <br>
   <a href="https://github.com/Kreusada/OceanScript"><img src="https://github.com/Kreusada/OceanScript/blob/main/.github/oceanscript.png?raw=true" alt="OceanScript Esoteric Language"></a>
   <br>
-  OceanScript Esoteric Language (2.1.3 release)
+  OceanScript Esoteric Language (2.2.0 release)
   <br>
 </h1>
 
@@ -39,8 +39,7 @@ OceanScript is an Esoteric language used to encode and decode text into
 a formulation of characters - where the final result looks like waves in the ocean.
 
 Unlike its prior versions, OceanScript supports any character, as well as capitalization.
-Your encoded string should be decoded to look exactly the same as the encoded string. Note, however,
-that outlying whitespace characters are stripped from the edges of the text.
+Your encoded string should be decoded to look exactly the same as the encoded string.
 
 # How does it work?
 
