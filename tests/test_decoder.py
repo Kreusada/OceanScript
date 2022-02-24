@@ -59,6 +59,48 @@ class DecoderTest(unittest.TestCase):
         self.assertEqual(decode("*^>..~>...*~>.._<.*^<.~>..*_>.._-..*^>.."), "LxOgAoRqL")
         self.assertEqual(decode("*~<..~<...*^<.~-..*_<.^>.*^-.~<..*_-..."), "MvAnGcBmZ")
 
+    def test_encoding_1_to_9(self):
+        self.assertEqual(decode("_>o~>o~>o~-o~<o^-o^>o_>o_<o_<o^>o_-o~-o_-o"), "96654239773858")
+        self.assertEqual(decode("_<o_<o~-o^-o^<o_-o^-o_<o_>o_-o_>o^-o^<o_-o"), "77521827989218")
+        self.assertEqual(decode("~>o_>o_-o^-o_>o~-o^<o^-o^>o_>o_-o_>o^>o_-o"), "69829512398938")
+        self.assertEqual(decode("^<o^>o_<o~>o_<o^>o_<o~-o_<o~-o~-o_>o~-o_>o"), "13767375755959")
+        self.assertEqual(decode("_<o~-o~-o^<o~<o^<o^>o_>o_>o~-o_-o^-o_-o^<o"), "75514139958281")
+        self.assertEqual(decode("~<o^-o_>o_>o~-o_>o_-o_-o_>o_>o~>o_-o^-o^<o"), "42995988996821")
+        self.assertEqual(decode("_>o^<o_-o_>o^<o^<o~-o_>o_<o~>o~<o_-o_-o^>o"), "91891159764883")
+        self.assertEqual(decode("^-o^>o_<o^<o_>o~-o_-o~>o~-o~>o~<o~<o^-o_>o"), "23719586564429")
+        self.assertEqual(decode("~-o_<o_>o~-o^>o^<o~<o_>o_-o~<o^>o~>o_>o~>o"), "57953149843696")
+        self.assertEqual(decode("_>o_>o_-o_<o~-o^>o~-o^>o_>o~-o~-o^>o_<o~-o"), "99875353955375")
+        self.assertEqual(decode("~>o^<o~-o_>o~<o_>o_>o~<o~<o_>o_<o_>o^>o_<o"), "61594994497937")
+        self.assertEqual(decode("~-o^-o~-o~<o_-o^<o_>o~-o_>o_>o~-o^>o^-o_<o"), "52548195995327")
+        self.assertEqual(decode("~<o_>o^>o_-o^<o_-o_-o_-o^-o~-o~>o_<o~<o~<o"), "49381888256744")
+        self.assertEqual(decode("~-o~>o~>o^-o^-o~-o_>o_>o~<o~<o^<o_-o~-o^<o"), "56622599441851")
+        self.assertEqual(decode("^-o_<o^-o_>o~<o~<o~-o_>o^<o_-o^-o^>o~>o^<o"), "27294459182361")
+        self.assertEqual(decode("_>o_-o^<o~>o_<o_>o_<o~<o_<o~>o_>o~>o_<o~>o"), "98167974769676")
+        self.assertEqual(decode("^>o^>o~<o_>o^<o_>o^-o~-o^>o~>o^>o_>o~<o~-o"), "33491925363945")
+        self.assertEqual(decode("_-o~<o^-o_>o^<o~>o^-o_>o_-o_>o_>o^-o^-o_>o"), "84291629899229")
+        self.assertEqual(decode("_>o_>o^-o_-o_-o^<o~>o^<o~-o_<o~<o~-o^>o^-o"), "99288161574532")
+        self.assertEqual(decode("_<o~<o_>o_<o_-o^>o^-o_<o_<o~<o_>o~<o~<o^-o"), "74978327749442")
+
+    def test_valid_4_dot_syntax(self):
+        self.assertEqual(decode("^<...."), "1")
+        self.assertEqual(decode("^-...."), "2")
+        self.assertEqual(decode("^>...."), "3")
+        self.assertEqual(decode("~<...."), "4")
+        self.assertEqual(decode("~-...."), "5")
+        self.assertEqual(decode("~>...."), "6")
+        self.assertEqual(decode("_<...."), "7")
+        self.assertEqual(decode("_-...."), "8")
+        self.assertEqual(decode("_>...."), "9")
+        self.assertEqual(decode("^<o"), "1")
+        self.assertEqual(decode("^-o"), "2")
+        self.assertEqual(decode("^>o"), "3")
+        self.assertEqual(decode("~<o"), "4")
+        self.assertEqual(decode("~-o"), "5")
+        self.assertEqual(decode("~>o"), "6")
+        self.assertEqual(decode("_<o"), "7")
+        self.assertEqual(decode("_-o"), "8")
+        self.assertEqual(decode("_>o"), "9")
+
     def test_splash_rule_integers(self):
         with self.assertRaises(OceanScriptError):
             decode("*_>...")  # capitalized 0

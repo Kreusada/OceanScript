@@ -13,7 +13,7 @@ __all__ = (
     "encode",
 )
 
-__version__ = "2.2.1"
+__version__ = "2.3.0"
 
 ROW_INDICATORS = "^~_"
 COLUMN_INDICATORS = "<->"
@@ -30,19 +30,26 @@ R3S1S = "gpy7"
 R3S2S = "hqz8"
 R3S3S = "ir09"
 
-MUL_MAPPING = {
-    0: 1,
-    1: 1,
-    2: 1,
-    3: 2,
-    4: 2,
-    5: 2,
-    6: 3,
-    7: 3,
-    8: 3,
-    9: 4,
-    10: 4,
-    11: 4,
+DOT_INDEX_MAPPING = {
+    0: ".",
+    1: ".",
+    2: ".",
+    3: "..",
+    4: "..",
+    5: "..",
+    6: "...",
+    7: "...",
+    8: "...",
+    # 9, 10, 11 shall use "o" instead of "...."
+    # for the future. When encoding "3" for example,
+    # it will return "^>o" instead of "^>...." as of 2.3.0.
+    # 4-dot syntax is still permittable but may be
+    # slated for deprecation and removal in the far
+    # distant future. Its in my best recommendations
+    # to begin getting used to this newer syntax.
+    9: "o",
+    10: "o",
+    11: "o",
 }
 
 
@@ -107,7 +114,7 @@ def encode(text: str, *, mode: Optional[Literal["squash", "stretch"]] = "squash"
                 ret += "-"
             else:
                 ret += ">"
-            ret += "." * MUL_MAPPING[R1S.index(char)]
+            ret += DOT_INDEX_MAPPING[R1S.index(char)]
         elif char in R2S:
             ret += "~"
             if char in R2S1S:
@@ -116,7 +123,7 @@ def encode(text: str, *, mode: Optional[Literal["squash", "stretch"]] = "squash"
                 ret += "-"
             else:
                 ret += ">"
-            ret += "." * MUL_MAPPING[R2S.index(char)]
+            ret += DOT_INDEX_MAPPING[R2S.index(char)]
         elif char in R3S:
             ret += "_"
             if char in R3S1S:
@@ -125,7 +132,7 @@ def encode(text: str, *, mode: Optional[Literal["squash", "stretch"]] = "squash"
                 ret += "-"
             else:
                 ret += ">"
-            ret += "." * MUL_MAPPING[R3S.index(char)]
+            ret += DOT_INDEX_MAPPING[R3S.index(char)]
         elif char == " ":
             if mode == "squash":
                 # squash mode ensures that no whitespace characters
@@ -168,7 +175,7 @@ def splitwaves(text: str, *, include_invalid: bool = True) -> Tuple[str]:
     Tuple[str]
         A tuple of waves split from the oceanscript
     """
-    split = re.split(r"(\*?=.)|(\\n|,|%)|(\*?[\^~_][>\-<]\.+)|(.|\n)", text)
+    split = re.split(r"(\*?=.)|(\\n|,|%)|(\*?[\^~_][>\-<](?:\.+|o))|(.|\n)", text)
     if include_invalid:
         check = None
     else:
@@ -306,18 +313,24 @@ def decode(text: str) -> str:
         dot_range = range(1, 5)  # double reference
         if cdots not in dot_range:
             if cdots == 0:
-                m = "but did not find any"
+                m = "but did not find anything at this position"
             else:
-                m = f"but found {cdots} instead"
+                m = f"but found {cdots} dots instead"
             raise OceanScriptError(
-                message=f"Partially established wave ('{row_indicator}{column_indicator}') expected 1, 2, 3, or 4 dots at the end, {m}",
+                message=f"Partially established wave ('{row_indicator}{column_indicator}') expected 1, 2, 3, or 4 dots (or 4 dot notation 'o') at the end, {m}",
                 position=position,
             )
-        if any(d != "." for d in dots):
+        if not all(map("o.".__contains__, dots)):
             raise OceanScriptError(
-                message=f"'{column_indicator}' indicator expected only dot indicators, but received '{dots}' instead",
+                message=f"'{column_indicator}' indicator expected only dot indicators, or the 4 dot notation 'o', but received '{dots}' instead",
                 position=position,
             )
+        if dots == "o":
+            # "o" syntax needs to always be recognized as a count
+            # of 4 dots under the hood for this next process to work
+            # properly. Without this, decoded integers would instead
+            # be translated to a-i in the first box.
+            cdots = 4
         if row_indicator == "^":
             if column_indicator == "<":
                 selection = R1S1S
