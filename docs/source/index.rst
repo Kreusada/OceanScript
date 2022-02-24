@@ -17,8 +17,7 @@ This site will help you to learn the basics of how to encode and decode oceanscr
 There is also information on the Python implementation and how to use it.
 
 .. toctree::
+   :caption: Python Implementation
+   :maxdepth: 3
 
-    :caption: Python Implementation
-    :maxdepth: 3
-
-    python_implementation
+   python_implementation
