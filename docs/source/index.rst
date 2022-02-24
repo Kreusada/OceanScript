@@ -24,3 +24,9 @@ There is also information on the Python implementation and how to use it.
    api/decoding
    api/encoding
    api/error_handling
+
+.. toctree::
+   :caption: Indexes and Glossaries
+   :maxdepth: 2
+
+   glossary

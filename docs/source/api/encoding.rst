@@ -10,9 +10,9 @@ which can be one of "stretch" or "squash" - defaulting to "squash".
 
 .. _api-encoding-mode-stretch:
 
-^^^^^^^
-Stretch
-^^^^^^^
+^^^^^^^^^^^^
+Stretch mode
+^^^^^^^^^^^^
 
 Replaces instances of whitespace (" ") with line breaks. This mode is handy
 for encoding mass amounts of text, or to present oceanscript nicely.
@@ -25,9 +25,9 @@ for encoding mass amounts of text, or to present oceanscript nicely.
 
 .. _api-encoding-mode-squash:
 
-^^^^^^
-Squash
-^^^^^^
+^^^^^^^^^^^
+Squash mode
+^^^^^^^^^^^
 
 Replaces instances of whitespace (" ") with commas. This mode is handy
 for shorter amounts of text to fit on single lines.
