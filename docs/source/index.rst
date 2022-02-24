@@ -21,3 +21,4 @@ There is also information on the Python implementation and how to use it.
    :maxdepth: 3
 
    api_reference
+   api_encoding
