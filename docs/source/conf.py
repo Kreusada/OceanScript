@@ -14,6 +14,8 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
 
+import oceanscript
+
 
 # -- Project information -----------------------------------------------------
 
@@ -22,7 +24,7 @@ copyright = '2022, Kreusada'
 author = 'Kreusada'
 
 # The full version, including alpha/beta/rc tags
-release = '2.3.0'
+release = oceanscript.__version__
 
 
 # -- General configuration ---------------------------------------------------
@@ -69,3 +71,7 @@ extlinks = {
     'issue': ('https://github.com/Kreusada/OceanScript/issues/%s', '#'),
     'ghuser': ('https://github.com/%s', '@'),
 }
+
+# Autodoc
+autodoc_default_options = {"show-inheritance": True}
+autodoc_typehints = "none"

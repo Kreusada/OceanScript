@@ -67,7 +67,7 @@ class OceanScriptError(Exception):
         """Returns the traceback string without the position reference at the end.
 
         Returns
-        ------
+        -------
         str
             The traceback message without position reference.
         """

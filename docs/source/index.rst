@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 .. image:: /oceanscript.png
-    :target: https://github.com/Kreusada/OceanScript
+    :target: :ghuser:`Kreusada/OceanScript`
     :alt: OceanScript
 
 OceanScript Documentation
