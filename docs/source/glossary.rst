@@ -2,9 +2,9 @@
 
 .. _glossary-terminology:
 
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 Terminology Glossary
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
     :widths: 15 50 10
