@@ -7,7 +7,6 @@ Terminology Glossary
 ^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
-    :widths: 15 50 10
     :header-rows: 1
 
     * - Word
@@ -36,7 +35,6 @@ Identifier Glossary
 ^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
-    :widths: 15 50
     :header-rows: 1
 
     * - Identifier

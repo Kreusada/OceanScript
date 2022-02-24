@@ -16,6 +16,7 @@ a formulation of characters - where the final result looks like waves in the oce
 This site will help you to learn the basics of how to encode and decode oceanscript.
 There is also information on the Python implementation and how to use it.
 
+
 .. toctree::
    :caption: Python Implementation
    :maxdepth: 2
@@ -24,6 +25,7 @@ There is also information on the Python implementation and how to use it.
    api/decoding
    api/encoding
    api/error_handling
+
 
 .. toctree::
    :caption: Indexes and Glossaries
