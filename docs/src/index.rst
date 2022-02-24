@@ -1,7 +1,7 @@
 .. image:: /oceanscript.png
     :target: https://github.com/Kreusada/OceanScript
     :alt: OceanScript
-    
+
 OceanScript Documentation
 =========================
 
