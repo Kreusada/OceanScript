@@ -18,7 +18,9 @@ There is also information on the Python implementation and how to use it.
 
 .. toctree::
    :caption: Python Implementation
-   :maxdepth: 3
+   :maxdepth: 2
 
-   api_reference
-   api_encoding
+   api/automodule
+   api/decoding
+   api/encoding
+   api/error_handling
