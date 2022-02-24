@@ -8,6 +8,7 @@ Terminology Glossary
 
 .. list-table::
     :header-rows: 1
+    :table-widths: 5 25 13
 
     * - Word
       - Meaning
@@ -36,6 +37,7 @@ Identifier Glossary
 
 .. list-table::
     :header-rows: 1
+    :table-widths: 5 25
 
     * - Identifier
       - Description
