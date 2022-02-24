@@ -63,6 +63,6 @@ intersphinx_mapping = {
 # Ext links
 
 extlinks = {
-    "issue": ("https://github.com/Kreusada/OceanScript/issues/%s", "#"),
-    "ghuser": ("https://github.com/%s", "@"),
+    'issue': ('https://github.com/Kreusada/OceanScript/issues/%s', '#'),
+    'ghuser': ('https://github.com/%s', '@'),
 }
