@@ -20,4 +20,4 @@ There is also information on the Python implementation and how to use it.
    :caption: Python Implementation
    :maxdepth: 3
 
-   python_implementation
+   api_reference
