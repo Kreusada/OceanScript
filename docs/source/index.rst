@@ -18,6 +18,13 @@ There is also information on the Python implementation and how to use it.
 
 
 .. toctree::
+   :caption: Using OceanScript
+   :maxdepth: 2
+
+   encoding
+
+
+.. toctree::
    :caption: Python Implementation
    :maxdepth: 2
 
