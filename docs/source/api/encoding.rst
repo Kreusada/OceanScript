@@ -18,7 +18,7 @@ Replaces instances of whitespace (" ") with line breaks. This mode is handy
 for encoding mass amounts of text, or to present oceanscript nicely.
 
 .. code-block:: python
-    
+
     >>> oceanscript.encode('Hello world!', mode='stretch')
     '*_-.~-.^>..^>..~>..'
     '~-...~>.._>..^>..~<.=!'
@@ -33,7 +33,7 @@ Replaces instances of whitespace (" ") with commas. This mode is handy
 for shorter amounts of text to fit on single lines.
 
 .. code-block:: python
-    
+
     >>> oceanscript.encode('Hello world!', mode='squash')
     '*_-.~-.^>..^>..~>..,~-...~>.._>..^>..~<.=!'
 
