@@ -12,4 +12,4 @@ They look like this:
 
 .. csv-table::
    :file: /tables.csv
-   :widths: 2 2 2 2 2
+   :widths: 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
