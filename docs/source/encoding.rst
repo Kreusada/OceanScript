@@ -13,8 +13,3 @@ They look like this:
 .. csv-table::
    :file: /tables.csv
    :widths: 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
-   :heights:
-
-Alternatively, you could view them like this:
-
-.. code-block:: yaml
