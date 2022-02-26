@@ -85,8 +85,8 @@ Decoding Identifiers
 The following characters will appear by themselves, and they have literal
 translations which are easy to convert to:
 
-``%`` -> ``[LINE BREAK]``
-``,`` -> ``[SPACE]``
+- ``%`` -> ``[LINE BREAK]``
+- ``,`` -> ``[SPACE]``
 
 Decoding Waves
 ==============
