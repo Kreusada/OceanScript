@@ -19,6 +19,9 @@
   <a href="https://www.patreon.com/kreusada">
     <img src="https://img.shields.io/badge/Support-on%20Patreon-red.svg" alt="Support on Patreon">
   </a>
+  <a href='https://oceanscript.readthedocs.io/en/latest/?badge=latest'>
+    <img src='https://readthedocs.org/projects/oceanscript/badge/?version=latest' alt='Documentation Status'>
+  </a>
 </p>
 
 <p align="center">
@@ -324,6 +327,8 @@ to include invalid identifiers/waves in the string, defaulting to True.
 >>> oceanscript.splitwaves("*_-.~-.^>..^>..~>..,~-...~>.._>..^>..~<.=!,bad", include_invalid=False)
 ('*_-.', '~-.', '^>..', '^>..', '~>..', ',', '~-...', '~>..', '_>..', '^>..', '~<.', '=!', ',')
 ```
+
+Please see the **docs** for more information.
 
 # Installation
 
