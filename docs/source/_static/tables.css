@@ -1,6 +1,18 @@
+:root {
+    --sky-blue: skyblue;
+}
+
 table.docutils thead tr th {
     font-weight: normal;
     padding: 7px 5px;
     vertical-align: middle;
+    text-align: center;
+}
+
+div.admonition {
+    box-shadow: var(--sky-blue);
+}
+
+div.admonition p {
     text-align: center;
 }
