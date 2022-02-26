@@ -37,7 +37,10 @@ extensions = [
     "sphinx.ext.extlinks",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
+    "sphinx_rtd_theme",
 ]
+
+import sphinx_rtd_theme
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
