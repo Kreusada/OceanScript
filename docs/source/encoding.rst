@@ -106,16 +106,17 @@ So the number 7 in oceanscript would be ``_<o`` instead of ``_<....``.
 Forming Waves
 ^^^^^^^^^^^^^
 
-When we've encoded a character into oceanscript, it is referred to as a wave. For example,
-``^<..`` is a **wave** representing the letter "J". The above examples demonstrate how waves
+When we've encoded a character into oceanscript, it is referred to as a :term:`wave <Wave>`. For example,
+``^<..`` is a :term:`wave <Wave>` representing the letter "J". The above examples demonstrate how waves
 can be formed.
 
 ^^^^^^^^^^^^^
 Forming Tides
 ^^^^^^^^^^^^^
 
-Tides are the joinings of waves in oceanscript - to form a word. To form a word,
-simply join the waves together. Here is each letter encoded as a wave in the word "hello":
+:term:`Tides <Tide>` are the joinings of :term:`waves <Wave>` in oceanscript - to form a word. To form a word,
+simply join the :term:`waves <Wave>` together. Here is each letter encoded as a :term:`wave <Wave>` in
+the word "hello":
 
 - h = ``_-.``
 - e = ``~-.``
@@ -123,14 +124,14 @@ simply join the waves together. Here is each letter encoded as a wave in the wor
 - l = ``^>..``
 - o = ``~>..``
 
-To form the word hello, we will join these waves together. "hello" in oceanscript will look like
+To form the word hello, we will join these :term:`waves <Wave>` together. "hello" in oceanscript will look like
 this: ``_-.~-.^>..^>..~>..``.
 
 ^^^^^^^^^^^^^^
 Forming Oceans
 ^^^^^^^^^^^^^^
 
-This is the final escalation of encoding. "Ocean" is the name given to a collection of tides to
+This is the final escalation of encoding. :term:`Ocean` is the name given to a collection of tides to
 form sentences, paragraphs, even essays if you wish. A space in oceanscript is represented
 as ``,``, which is put in between each wave you want to join together. Here, we have two waves
 representing the words "hello" and "world":
@@ -140,7 +141,7 @@ representing the words "hello" and "world":
 ``world`` -> ``~-...~>.._>..^>..~<.``
 
 To join these waves together, we just need to put our comma (``,``) in between them. "hello world"
-would look like this: ``_-.~-.^>..^>..~>..,~-...~>.._>..^>..~<.``. This is an ocean.
+would look like this: ``_-.~-.^>..^>..~>..,~-...~>.._>..^>..~<.``. This is an :term:`ocean <Ocean>`.
 
 Capitalization
 ==============
@@ -159,16 +160,16 @@ Non a-Z/0-9 Characters
 You can now write "Hello world", or "How are you" - but what about punctuation!
 
 In oceanscript, if a character does not appear in the tables, it doesn't belong in the ocean.
-We need to use a **raft** in order to write said character. A raft is denoted by the character ``=``,
-and it works just like the splash indicator, we prefix the given character with it. Rafts are **NOT**
-allowed for a-Z and 0-9, but are **required** for any other character.
+We need to use a **raft** in order to write said character. A :term:`raft <Raft>` is denoted by the character ``=``,
+and it works just like the :term:`splash <Splash>` indicator, we prefix the given character with it. 
+:term:`Rafts <Raft>` are **NOT** allowed for a-Z and 0-9, but are **required** for any other character.
 
 .. admonition:: Example
 
-   Is ``?`` in a-Z/0-9? No. We need to use a raft for this character.
+   Is ``?`` in a-Z/0-9? No. We need to use a :term:`raft <Raft>` for this character.
    It would look like this ``=?``.
 
-Rafts can only take one passenger at a time, so to write an ellipsis (...), we would need
+:term:`Rafts <Raft>` can only take one passenger at a time, so to write an ellipsis (...), we would need
 3 rafts (``=.=.=.``).
 
 Now we can write "How are you?" -> ``*_-.~>..~-...,^<._>.~-.,_<...~>..^>...=?``
