@@ -1,19 +1,6 @@
-/* :root {
-    --blue: #3399ff;
-    --inline-code-background: var(--blue);
-    --table-text: var(--blue);
-}
-
-code {
-    background-color: var(--inline-code-background);
-    padding: .15em;
-    border-radius: 3px;
-}
-
 table.docutils thead tr th {
-    color: var(--table-text);
     font-weight: normal;
     padding: 7px 5px;
     vertical-align: middle;
     text-align: center;
-} */
+}
