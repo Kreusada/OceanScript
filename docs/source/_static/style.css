@@ -5,7 +5,7 @@
     --warning-background: #ffe900;
     --warning-text: #000000;
     --error-background: #d70022;
-    --error-text: #ffffff;
+    --error-text: var(--note-text);
 }
 
 table.docutils thead tr th {
@@ -23,7 +23,7 @@ div.admonition {
     border-left-style: solid;
     background-color: var(--sky-blue);
 }
-  
+
 p.admonition-title {
     font-weight: bold;
     margin: 0 -0.8rem !important;

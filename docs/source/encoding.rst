@@ -161,7 +161,7 @@ You can now write "Hello world", or "How are you" - but what about punctuation!
 
 In oceanscript, if a character does not appear in the tables, it doesn't belong in the ocean.
 We need to use a **raft** in order to write said character. A :term:`raft <Raft>` is denoted by the character ``=``,
-and it works just like the :term:`splash <Splash>` indicator, we prefix the given character with it. 
+and it works just like the :term:`splash <Splash>` indicator, we prefix the given character with it.
 :term:`Rafts <Raft>` are **NOT** allowed for a-Z and 0-9, but are **required** for any other character.
 
 .. admonition:: Example

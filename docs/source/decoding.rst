@@ -70,7 +70,7 @@ Rafts are so easy to decode, simply remove the raft!
     - ``==`` -> ``=``
 
     .. warning::
-        
+
         Double rafting (``==``) may become illegal in the future seeing
         as, realistically, it doesn't make any sense. Why raft a raft?
 
@@ -133,7 +133,7 @@ You should end up with the following:
 
 This is essentially our boxes, but grouped into lines or "sets" instead.
 
-Now imagine you are given a completely random wave, ``~<..``. You can see its got
+Now imagine you are given a completely random wave, :code:`~<..`. You can see its got
 **2** dots, so it is going to be in the **2**nd set.
 
 .. code-block:: diff
