@@ -133,8 +133,8 @@ You should end up with the following:
 
 This is essentially our boxes, but grouped into lines or "sets" instead.
 
-Now imagine you are given a completely random wave, ``~<..``. You can see its got **2**
-dots, so it is going to be in the **2**nd set.
+Now imagine you are given a completely random wave, ``~<..``. You can see its got
+**2** dots, so it is going to be in the **2**nd set.
 
 .. code-block:: diff
 
