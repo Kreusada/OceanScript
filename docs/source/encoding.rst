@@ -107,7 +107,7 @@ Forming Waves
 ^^^^^^^^^^^^^
 
 When we've encoded a character into oceanscript, it is referred to as a wave. For example,
-```^<..`` is a **wave** representing the letter "J". The above examples demonstrate how waves
+``^<..`` is a **wave** representing the letter "J". The above examples demonstrate how waves
 can be formed.
 
 ^^^^^^^^^^^^^
@@ -117,15 +117,11 @@ Forming Tides
 Tides are the joinings of waves in oceanscript - to form a word. To form a word,
 simply join the waves together. Here is each letter encoded as a wave in the word "hello":
 
-   h = ``_-.``
-
-   e = ``~-.``
-
-   l = ``^>..``
-
-   l = ``^>..``
-
-   o = ``~>..``
+- h = ``_-.``
+- e = ``~-.``
+- l = ``^>..``
+- l = ``^>..``
+- o = ``~>..``
 
 To form the word hello, we will join these waves together. "hello" in oceanscript will look like
 this: ``_-.~-.^>..^>..~>..``.
@@ -134,7 +130,7 @@ this: ``_-.~-.^>..^>..~>..``.
 Forming Oceans
 ^^^^^^^^^^^^^^
 
-This is the final escalation of encoding. "Ocean" is the name given to a collection of words to
+This is the final escalation of encoding. "Ocean" is the name given to a collection of tides to
 form sentences, paragraphs, even essays if you wish. A space in oceanscript is represented
 as ``,``, which is put in between each wave you want to join together. Here, we have two waves
 representing the words "hello" and "world":
@@ -144,11 +140,10 @@ representing the words "hello" and "world":
 ``world`` -> ``~-...~>.._>..^>..~<.``
 
 To join these waves together, we just need to put our comma (``,``) in between them. "hello world"
-would look like this: ``_-.~-.^>..^>..~>..,~-...~>.._>..^>..~<.``
+would look like this: ``_-.~-.^>..^>..~>..,~-...~>.._>..^>..~<.``. This is an ocean.
 
-^^^^^^^^^^^^^^
 Capitalization
-^^^^^^^^^^^^^^
+==============
 
 The tables that have been shown above only contain lower-case letters and numbers.
 To write a capital letter, we use the *splash indicator* which looks like this: ``*``.
@@ -158,9 +153,8 @@ Here we have the letter "h": ``_-.``. To capitalize, we add our splash at the st
 so it will look like this: ``*_-.``. If you wanted to write a whole tide in capitals, you'd need
 to use the splash indicator for each wave in that tide.
 
-^^^^^^^^^^^^^^^^^^^^^^
 Non a-Z/0-9 Characters
-^^^^^^^^^^^^^^^^^^^^^^
+======================
 
 You can now write "Hello world", or "How are you" - but what about punctuation!
 
@@ -179,3 +173,30 @@ Rafts can only take one passenger at a time, so to write an ellipsis (...), we w
 
 Now we can write "How are you?" -> ``*_-.~>..~-...,^<._>.~-.,_<...~>..^>...=?``
 
+Literal Line Breaks
+===================
+
+Be careful when writing line breaks in oceanscript, seeing as a line break would represent a space
+and not a **literal** line break. To do so literally, use the ``%`` character.
+
+.. admonition:: Example
+
+   ```
+   H
+   I
+   ```
+
+   This word is both fully capitalized and uses a line break to split the
+   two letters (for whatever reason). It would be written as ``*_-.%*_>.``
+
+   ```
+   I - I
+   K - Know
+   R - Right
+   ```
+
+   This acronym uses line breaks, and would be encoded to look like this:
+
+   .. code-block::
+
+      *_>.,=-,*_>.%*^-..,=-,*^-..~-..~>..~-...%*_>..,=-,*_>.._>._<._-.^-...
