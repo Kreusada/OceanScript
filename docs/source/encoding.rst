@@ -181,19 +181,19 @@ and not a **literal** line break. To do so literally, use the ``%`` character.
 
 .. admonition:: Example
 
-   ```
-   H
-   I
-   ```
+   .. code-block::
+
+      H
+      I
 
    This word is both fully capitalized and uses a line break to split the
    two letters (for whatever reason). It would be written as ``*_-.%*_>.``
 
-   ```
-   I - I
-   K - Know
-   R - Right
-   ```
+   .. code-block::
+
+      I - I
+      K - Know
+      R - Right
 
    This acronym uses line breaks, and would be encoded to look like this:
 
