@@ -6,34 +6,31 @@
 Terminology Glossary
 ^^^^^^^^^^^^^^^^^^^^
 
-.. list-table::
-    :header-rows: 1
-    :widths: 5 25 13
+.. glossary::
 
-    * - Word
-      - Meaning
-      - Example
-    * - Raft
-      - A character (``=``) used to prefix a special character (not a-Z or 0-9).
-      - ``=.``
-    * - Ripple
-      - A character that would make up a **wave**.
-      - ``^``
-    * - Splash
-      - A character (``*``) used to capitalize the following wave.
-      - ``*_<.``
-    * - Tide
-      - A collection of waves to form a word, where the word is the tide.
-      - ``*_-.~-.^>..^>..~>..``
-    * - Wave
-      - A single character encoded into oceanscript.
-      - ``^<..``
+    Ocean
+      A collection of tides to form sentences.
+
+    Raft
+      A character (``=``) used to prefix a special character (not a-Z or 0-9).
+
+    Ripple
+      A character that would be a part of a **wave**.
+
+    Splash
+      A character (``*``) used to capitalize the following wave.
+
+    Tide
+      A collection of waves to form a word, where the word is the tide.
+
+    Wave
+      A single character encoded into oceanscript.
 
 .. _glossary-identifier:
 
-^^^^^^^^^^^^^^^^^^^
-Identifier Glossary
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
+Identifier Table
+^^^^^^^^^^^^^^^^
 
 .. list-table::
     :header-rows: 1
