@@ -40,7 +40,6 @@ function OceanScriptError(char, position) {
 OceanScriptError.prototype = Object.create(Error.prototype);
 
 function encode(text) {
-    text = text.trim();
     var ret = "";
     for (var i = 0; i < text.length; i++) {
         var char = text[i];
@@ -99,27 +98,6 @@ function encode(text) {
     }
     return ret;
 }
-
-// function decode(text) {
-//     var regex = /(\*?=.)|(\\n|,|%)|(\*?[\^~_][>\-<]\.{1,4})/;
-//     var chunks = text.split(regex).filter(x => !!x);
-//     var message = "";
-//     for (const [i, j] of chunks.entries()) {
-//         if (",\n".includes(j)) {
-//             message += " ";
-//             continue;
-//         }
-//         if (j == "%") {
-//             message += "\n";
-//             continue;
-//         }
-//         if (j.length < 2) {
-//             throw new OceanScriptError(`invalid syntax '${j}'`)
-//         }
-//         if (j[0] == "*") {
-//         }
-//     }
-// }
 
 module.exports = {
     encode: encode,

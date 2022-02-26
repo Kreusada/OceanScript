@@ -2,7 +2,7 @@
   <br>
   <a href="https://github.com/Kreusada/OceanScript"><img src="https://github.com/Kreusada/OceanScript/blob/main/.github/oceanscript.png?raw=true" alt="OceanScript Esoteric Language"></a>
   <br>
-  OceanScript Esoteric Language (2.2.1 release)
+  OceanScript Esoteric Language (2.3.0 release)
   <br>
 </h1>
 
@@ -18,6 +18,9 @@
   </a>
   <a href="https://www.patreon.com/kreusada">
     <img src="https://img.shields.io/badge/Support-on%20Patreon-red.svg" alt="Support on Patreon">
+  </a>
+  <a href='https://oceanscript.readthedocs.io/en/latest/?badge=latest'>
+    <img src='https://readthedocs.org/projects/oceanscript/badge/?version=latest' alt='Documentation Status'>
   </a>
 </p>
 
@@ -61,9 +64,9 @@ without the use of the encoder. Take a look at these 4 tables below:
 `~` | v | w | x | `...`
 `_` | y | z | 0 | `...`
 ㅤ | `<` | `-` | `>` |ㅤ
-`^` | 1 | 2 | 3 | `....`
-`~` | 4 | 5 | 6 | `....`
-`_` | 7 | 8 | 9 | `....`
+`^` | 1 | 2 | 3 | `o`
+`~` | 4 | 5 | 6 | `o`
+`_` | 7 | 8 | 9 | `o`
 ㅤ | `<` | `-` | `>` |ㅤ
 
 When typing a character, you need to check the following in order:
@@ -71,6 +74,11 @@ When typing a character, you need to check the following in order:
 * What row is my character in? (The rows are denoted by the following characters: `^`, `~`, `_`.)
 * What column is my character in? (The columns are denoted by the following indicators: `<`, `-`, `>`.)
 * What box is my character in? (The boxes are denoted by `.`, multipled by n, where n is the box number. There are 4 boxes.)
+
+**Warning**
+
+  As of v2.3.0, BOX-4 characters (1-9) use `o` instead of `....` for box denotion.
+  Please adjust to using this syntax as soon as possible.
 
 Our final product will be known as a "wave". It will contain from 3 to 6 characters.
 Have a look at some examples below to understand how to write these waves.
@@ -275,7 +283,7 @@ OceanScriptError has a `position` attribute, which is the string index in where 
 exception was raised (at the start of the wave affected).
 
 ```py
->>> oceanscript.decode("*^>....") # trying to capitalize integer (3)
+>>> oceanscript.decode("*^>o") # trying to capitalize integer (3)
 OceanScriptError: [Position 0] Splash indicator not allowed for integer waves
 
 >>> oceanscript.decode("=a") # rafting a-Z/0-9
@@ -314,11 +322,13 @@ to include invalid identifiers/waves in the string, defaulting to True.
 ```py
 >>> oceanscript.splitwaves("*_-.~-.^>..^>..~>..,~-...~>.._>..^>..~<.=!")
 ('*_-.', '~-.', '^>..', '^>..', '~>..', ',', '~-...', '~>..', '_>..', '^>..', '~<.', '=!')
->>> oceanscript.splitwaves("*_-.~-.^>..^>..~>..,~-...~>.._>..^>..~<.=!,whoops")
-('*_-.', '~-.', '^>..', '^>..', '~>..', ',', '~-...', '~>..', '_>..', '^>..', '~<.', '=!', ',', 'w', 'h', 'o', 'o', 'p', 's')
->>> oceanscript.splitwaves("*_-.~-.^>..^>..~>..,~-...~>.._>..^>..~<.=!,whoops", include_invalid=False)
+>>> oceanscript.splitwaves("*_-.~-.^>..^>..~>..,~-...~>.._>..^>..~<.=!,bad")
+('*_-.', '~-.', '^>..', '^>..', '~>..', ',', '~-...', '~>..', '_>..', '^>..', '~<.', '=!', ',', 'b', 'a', 'd')
+>>> oceanscript.splitwaves("*_-.~-.^>..^>..~>..,~-...~>.._>..^>..~<.=!,bad", include_invalid=False)
 ('*_-.', '~-.', '^>..', '^>..', '~>..', ',', '~-...', '~>..', '_>..', '^>..', '~<.', '=!', ',')
 ```
+
+Please see the **docs** for more information.
 
 # Installation
 
