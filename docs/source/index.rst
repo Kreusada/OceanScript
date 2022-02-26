@@ -22,6 +22,7 @@ There is also information on the Python implementation and how to use it.
    :maxdepth: 2
 
    encoding
+   decoding
 
 
 .. toctree::
