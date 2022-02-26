@@ -31,7 +31,7 @@ We need to check three things:
 2. What column is my character in?
 3. What box is my character in?
 
-.. example::
+.. admonition:: Example
 
    Lets try and write the letter "d".
 
