@@ -29,18 +29,6 @@ p.admonition-title {
     margin: 0 -0.8rem !important;
     padding: 0.4rem 0.6rem 0.4rem 2.5rem;
     position: relative;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-}
-
-p.admonition-title::before {
-    font: normal normal normal 24px/1 'Material Icons';
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    left: 9.6px;
 }
 
 div.important, div.note, div.hint, div.tip {
@@ -55,13 +43,6 @@ div.tip > p.admonition-title {
     color: var(--note-text);
 }
 
-div.important > p.admonition-title::before,
-div.note > p.admonition-title::before,
-div.hint > p.admonition-title::before,
-div.tip > p.admonition-title::before {
-    content: '\0e88e';
-}
-
 div.attention, div.warning, div.caution {
     border-left-color: var(--warning-background);
 }
@@ -73,12 +54,6 @@ div.caution > p.admonition-title {
     color: var(--warning-text);
 }
 
-div.attention > p.admonition-title::before,
-div.warning > p.admonition-title::before,
-div.caution > p.admonition-title::before {
-    content: '\0e002';
-}
-
 div.danger, div.error {
     border-left-color: var(--error-background);
 }
@@ -88,9 +63,3 @@ div.error > p.admonition-title {
     background-color: var(--error-background);
     color: var(--error-text);
 }
-
-div.danger > p.admonition-title::before,
-div.error > p.admonition-title::before {
-    content: '\0e000';
-}
-  
