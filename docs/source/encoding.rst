@@ -11,6 +11,11 @@ oceanscript, and in my opinion it is the best way to get started.
 They look like this:
 
 .. csv-table::
+   :file: /tables/all.csv
+   :widths: 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+   :align: center
+
+.. csv-table::
    :file: /tables/t1.csv
    :widths: 2 2 2 2 2
    :align: left
