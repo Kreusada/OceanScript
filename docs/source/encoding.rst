@@ -12,7 +12,7 @@ They look like this:
 
 .. csv-table::
    :file: /tables/all.csv
-   :widths: 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+   :widths: 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
    :align: center
 
 .. csv-table::
