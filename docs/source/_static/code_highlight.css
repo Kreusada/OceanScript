@@ -1,4 +1,8 @@
-code.literal {
-    color: #1dac54 !important;
-    background-color: #202020 !important;
+:root {
+    --blue: #3399ff;
+
+    --codeblock-border: var(--blue);
+    --inline-code-background: var(--blue);
+    --table-text: var(--blue);
+    --search-text: var(--blue);
 }
