@@ -1,2 +1,2 @@
 * text=auto eol=lf
-docs/** -linguist-documentation
+docs/** linguist-detectable
