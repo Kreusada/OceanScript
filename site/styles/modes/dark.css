@@ -1,0 +1,23 @@
+.dark-mode,
+.dark-mode textarea {
+    background-color: var(--dark-grey);
+    color: var(--color-white);
+}
+
+.dark-mode textarea {
+    border:2px solid var(--color-white);
+}
+
+.dark-mode label {
+    background-color: var(--darker-grey);
+    color: var(--color-white);
+}
+
+.dark-mode textarea#output, .dark-mode textarea#input:focus {
+    background-color: var(--darker-grey);
+}
+
+.dark-mode .IOCP {
+    background-color: var(--color-black);
+    color: var(--color-white)
+}

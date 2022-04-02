@@ -1,0 +1,37 @@
+.console-mode,
+.console-mode textarea {
+    background-color: var(--darker-grey);
+    color: var(--green)
+}
+
+.console-mode textarea {
+    border:2px solid var(--green);
+}
+
+.console-mode textarea::placeholder, .console-mode textarea#input:focus::placeholder {
+    color:var(--green);
+}
+
+.console-mode label {
+    background-color: var(--darker-green);
+    color: var(--color-black);
+}
+
+.console-mode textarea#output, .console-mode textarea#input:focus {
+    background-color: var(--color-black);
+    color: var(--green)
+}
+
+.console-mode .IOCP {
+    background-color: var(--color-black);
+    color: var(--green)
+}
+
+.console-mode h1 {
+    background-color: var(--color-black);
+}
+
+button#toggleModeConsole:hover {
+    background-color: var(--green);
+    color: var(--color-black)
+}

@@ -1,0 +1,198 @@
+:root {
+    --default-font: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --dark-grey: #333333;
+    --light-grey: #818181;
+    --darker-grey: #141414;
+    --green: #4CAF50;
+    --darker-green: #357e37;
+    --darker-blue: #000080;
+    --ocean-blue: #006994;
+    --blurple: #7289da;
+    --source-pink: #EF8091;
+    --warning-yellow: #eed202;
+    --blood-red: #880808;
+
+    /* Fuego mode */
+
+    --fiery-orange: #feb300;
+    --barn-red: #801100;
+    --sinopia: #D73502;
+    --golden-poppy-yellow: #FAC000;
+    --orange: #FC6400;
+    --dark-red: #8b0000;
+
+    /* Globe mode */
+
+    --dirt: #BB9981;
+    --dark-dirt: #534340;
+    --light-grass: #C5D8A4;
+    --grass: #567d46;
+}
+
+.IOStyle {
+    font-size: 50px;
+}
+
+/* side nav */
+
+.sn {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: var(--color-black);
+    overflow-x: hidden;
+}
+
+.sn button {
+    background-color: transparent;
+    padding: 6px 0px 6px 0px;
+    font-size: 15px;
+    color: var(--light-grey);
+    display: block;
+    width: 160px;
+}
+
+.sn button:enabled:hover {
+    box-shadow: 0 5px 5px 0 var(--color-black), 0 5px 5px 0 var(--color-black);
+}
+
+.sn h2 {
+    text-align: center;
+    color: var(--color-white);
+}
+
+.sn h3 {
+    color: var(--color-white);
+    text-align: center;
+    font-size: 10px;
+    float:left;
+}
+
+.sn h2:hover, .sn h3:hover {background-color: rgba(255, 255, 255, 0.1);}
+
+/* Core */
+
+* {
+    transition-duration: 1s;
+    font-family: var(--default-font);
+}
+
+h1, p {
+    transition-duration: 0s;
+    margin-left: 10px;
+}
+
+h1 {
+    display: inline-block;
+}
+
+body {
+    margin-left: 160px;
+    margin-top: 0px;
+}
+
+textarea {
+    resize: none;
+    overflow-wrap:break-word;
+    width: 900px;
+    height: 150px;
+    margin-left: 10px;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+textarea#input:focus {
+    background-color: var(--ocean-blue);
+    color: var(--color-white);
+    /* border: none; */
+    box-shadow: 0 10px 10px 0 var(--color-black), 0 10px 30px 0 var(--color-black);
+}
+
+textarea#input:focus::placeholder {
+    color: var(--color-white);
+    opacity: 50%;
+}
+
+textarea#output {
+    background-color: var(--ocean-blue);
+    color: var(--color-white);
+}
+
+label {
+    background-color: var(--ocean-blue);
+    color: var(--color-white);
+    font-size: 30px;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-width: 2px;
+    margin-left: 10px;
+}
+
+button {
+    position: relative;
+    text-align: center;
+    font-size: 10px;
+    font-family:var(--default-font);
+    height: 30px;
+    width: 100px;
+    vertical-align: bottom;
+    cursor: pointer;
+    background-color: var(--color-white);
+    transition-duration: 0.4s;
+    float:left;
+    border: none;
+}
+
+button.IOCP {
+    margin-left: 10px
+}
+
+button:disabled {
+    cursor:not-allowed;
+    opacity: 50%
+}
+
+button:enabled:hover {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    box-shadow: 0 10px 10px 0 var(--color-black), 0 10px 30px 0 var(--color-black);
+    border-radius: 2px;
+}
+
+button#copyClipboard:hover {
+    background-color: var(--green);
+}
+
+button#linkSource:hover {
+    color: var(--color-black);
+    background-color: var(--source-pink);
+}
+
+button#randomPhraseGenerator:hover {
+    background-color: var(--blurple);
+}
+
+button#clearTextAreas:hover {
+    background-color: var(--blood-red);
+}
+
+button#reportIssue:hover {
+    background-color: var(--warning-yellow);
+    color: var(--color-black)
+}
+
+button.docRef:hover {
+    background-color: var(--green);
+}
+
+button.pyDocRef:hover {
+    background-color: var(--ocean-blue);
+    color: var(--warning-yellow);
+}

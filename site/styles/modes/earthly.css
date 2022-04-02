@@ -1,0 +1,33 @@
+.earthly-mode,
+.earthly-mode textarea {
+    background-color: var(--dirt);
+    color: var(--dark-dirt);
+}
+
+.earthly-mode textarea {
+    border:2px solid var(--dark-dirt);
+}
+
+.earthly-mode textarea::placeholder, .earthly-mode textarea#input:focus::placeholder {
+    color:var(--green);
+}
+
+.earthly-mode label {
+    background-color: var(--light-grass);
+    color: var(--dark-dirt);
+}
+
+.earthly-mode textarea#output, .earthly-mode textarea#input:focus {
+    background-color: var(--grass);
+    color: var(--light-grass);
+}
+
+.earthly-mode .IOCP {
+    background-color: var(--dark-dirt);
+    color: var(--light-grass)
+}
+
+button#toggleModeEarthly:hover {
+    background-color: var(--dark-dirt);
+    color: var(--light-grass)
+}

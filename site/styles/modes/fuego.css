@@ -1,0 +1,36 @@
+.fuego-mode {
+    background-color: var(--orange);
+    color: var(--color-black);
+}
+
+.fuego-mode textarea {
+    border:2px solid var(--color-black);
+    background-color: var(--fiery-orange);
+    color: var(--color-black)
+}
+
+.fuego-mode textarea::placeholder, .fuego-mode textarea#input:focus::placeholder {
+    color:var(--fiery-orange);
+}
+
+.fuego-mode label {
+    background-color: var(--blood-red);
+    color: var(--color-black);
+}
+
+.fuego-mode textarea#output, .fuego-mode textarea#input:focus {
+    border:2px solid var(--fiery-orange);
+    background-color: var(--dark-red);
+    color: var(--orange);
+}
+
+.fuego-mode .IOCP {
+    background-color: var(--blood-red);
+    color: var(--golden-poppy-yellow);
+    /* border: 2px solid var(--fiery-orange); */
+}
+
+button#toggleModeFuego:hover {
+    background-color: var(--blood-red);
+    color: var(--fiery-orange);
+}

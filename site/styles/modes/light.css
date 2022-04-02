@@ -1,0 +1,15 @@
+.light-mode {
+    position: sticky;
+    text-align: left;
+    background-color: lightblue;
+    font-family:var(--default-font);
+}
+
+.light-mode textarea:focus {
+    border:2px solid var(--ocean-blue);
+}
+
+button#toggleModeLight:hover {
+    background-color: var(--color-white);
+    color: var(--color-black);
+}

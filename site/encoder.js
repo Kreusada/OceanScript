@@ -16,34 +16,27 @@ const R3S2S = "hqz8"
 const R3S3S = "ir09"
 
 const MUL_MAPPING = {
-    0: 1,
-    1: 1,
-    2: 1,
-    3: 2,
-    4: 2,
-    5: 2,
-    6: 3,
-    7: 3,
-    8: 3,
-    9: 4,
-    10: 4,
-    11: 4,
+    0: '.',
+    1: '.',
+    2: '.',
+    3: '..',
+    4: '..',
+    5: '..',
+    6: '...',
+    7: '...',
+    8: '...',
+    9: 'o',
+    10: 'o',
+    11: 'o',
 }
 
-function OceanScriptError(char, position) {
-    const error = new Error(`${char} (position ${position})`);
-    error.code = "OCEANSCRIPT_ERROR";
-    error.position = position;
-    return error;
-}
-
-OceanScriptError.prototype = Object.create(Error.prototype);
+const UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 function encode(text) {
     var ret = "";
     for (var i = 0; i < text.length; i++) {
         var char = text[i];
-        if (char == char.toUpperCase()) {
+        if (UPPER.includes(char)) {
             ret += "*";
         }
         var char = char.toLowerCase();
@@ -58,7 +51,7 @@ function encode(text) {
             else {
                 ret += ">";
             }
-            ret += ".".repeat(MUL_MAPPING[R1S.indexOf(char)]);
+            ret += MUL_MAPPING[R1S.indexOf(char)];
         }
         else if (R2S.includes(char)) {
             ret += "~";
@@ -71,7 +64,7 @@ function encode(text) {
             else {
                 ret += ">";
             }
-            ret += ".".repeat(MUL_MAPPING[R2S.indexOf(char)]);
+            ret += MUL_MAPPING[R2S.indexOf(char)];
         }
         else if (R3S.includes(char)) {
             ret += "_";
@@ -84,7 +77,7 @@ function encode(text) {
             else {
                 ret += ">";
             }
-            ret += ".".repeat(MUL_MAPPING[R3S.indexOf(char)]);
+            ret += MUL_MAPPING[R3S.indexOf(char)];
         }
         else if (char == " ") {
             ret += ",";
@@ -98,8 +91,3 @@ function encode(text) {
     }
     return ret;
 }
-
-module.exports = {
-    encode: encode,
-    OceanScriptError: OceanScriptError
-};

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>oceanscript.io</title>
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/modes/light.css">
+        <link rel="stylesheet" href="styles/modes/dark.css">
+        <link rel="stylesheet" href="styles/modes/console.css">
+        <link rel="stylesheet" href="styles/modes/fuego.css">
+        <link rel="stylesheet" href="styles/modes/earthly.css">
+        <script src="encoder.js"></script>
+        <script src="main.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <noscript>Your browser does not support JavaScript, and the encoder requires it.</noscript>
+        <script>
+            $(document).ready(function(){
+                $("#input").on("input", function(){
+                    var out = document.getElementById("output")
+                    var s = encode($(this).val())
+                    if (s === "") {
+                        var s = "[...]";
+                    }
+                    out.value = s;
+                });
+            });
+
+            $(document).ready(fillWithRandomPhrase)
+        </script>
+    </head>
+
+    <body class="light-mode">
+        <h1>oceanscript.io</h1>
+        <p>Enter some text in the text box, and OceanScript will be returned underneath.</p>
+        <label>Input</label>
+        <div class="IOStyle">
+            <textarea placeholder="Enter some text here" id="input" rows="10" cols="100" spellcheck="false"></textarea>
+        </div>
+        <label class="outLabel">Output</label>
+        <div class="IOStyle">
+            <textarea id="output" rows="10" cols="100" readonly="true">[...]</textarea>
+        </div>
+        <div class="sn">
+            <h2>Menu</h2>
+                <h3>Modes
+                    <button id="toggleModeLight" onclick="toggleLighting('light-mode')">Light</button>
+                    <button id="toggleModeDark" onclick="toggleLighting('dark-mode')">Dark</button>
+                    <button id="toggleModeConsole" onclick="toggleLighting('console-mode')">Console</button>
+                    <button id="toggleModeFuego" onclick="toggleLighting('fuego-mode')">Fuego</button>
+                    <button id="toggleModeEarthly" onclick="toggleLighting('earthly-mode')">Earthly</button>
+                </h3>
+                <h3>References
+                    <button class="docRef" onclick="window.open('https://oceanscript.readthedocs.io/en/latest/encoding.html', '_blank')">Encoding</button>
+                    <button class="docRef" onclick="window.open('https://oceanscript.readthedocs.io/en/latest/decoding.html', '_blank')">Decoding</button>
+                    <button class="docRef" onclick="window.open('https://oceanscript.readthedocs.io/en/latest/glossary.html', '_blank')">Glossary</button>
+                </h3>
+                <h3>Python References
+                    <button class="pyDocRef" onclick="window.open('https://oceanscript.readthedocs.io/en/latest/api/encoding.html', '_blank')">Encoder</button>
+                    <button class="pyDocRef" onclick="window.open('https://oceanscript.readthedocs.io/en/latest/api/decoding.html', '_blank')">Decoder</button>
+                    <button class="pyDocRef" onclick="window.open('https://oceanscript.readthedocs.io/en/latest/api/error_handling.html', '_blank')">Error handling</button>
+                    <button class="pyDocRef" onclick="window.open('https://oceanscript.readthedocs.io/en/latest/api/automodule.html', '_blank')">API Reference</button>
+                    <button class="pyDocRef" onclick="window.open('https://oceanscript.readthedocs.io/en/latest/api/automodule.html#oceanscript.OceanScriptError', '_blank')">OceanScriptError</button>
+                </h3>
+                <h3>Source Info
+                    <button id="linkSource" onclick="window.open('https://github.com/Kreusada/OceanScript', '_blank')">Source</button>
+                    <button id="reportIssue" onclick="window.open('https://github.com/Kreusada/OceanScript/issues/new', '_blank')">Report Issue</button>
+                </h3>
+        </div>
+        <!-- IOCP (IO Control Panel) -->
+        <button id="copyClipboard" class="IOCP" name="copyClipboard" onclick="copyToClipboard()">Copy output</button>
+        <button id="clearTextAreas" class="IOCP" onclick="clearTextAreas()">Clear</button>
+        <button id="randomPhraseGenerator" class="IOCP" onclick="fillWithRandomPhrase()">Random phrase</button>
+    </body>
+</html>
