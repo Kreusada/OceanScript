@@ -59,7 +59,7 @@ function checkButtons() {
     }
     else {
         $("#copyClipboard").removeAttr("disabled");
-        $("#clearTextAreas").removeAttr("disabled");   
+        $("#clearTextAreas").removeAttr("disabled");
     }
 }
 
